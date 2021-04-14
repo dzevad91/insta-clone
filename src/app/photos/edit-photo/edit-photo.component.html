@@ -1,0 +1,63 @@
+<form name="form" (ngSubmit)="f.form.valid && editPhoto(editPhotoModel.id)" #f="ngForm" id="forms">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-10 col-xs-10">
+                <h4 class="modal-heading" id="modal-basic-title">Edit Photo</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body text-center mb-20">
+        <div class="row">
+            <div class="col-md-12 panel-fields">
+                <div class="title_panel_name">
+                    <label for="example-text-input" class="label_font">Title:</label>
+                </div>
+
+                <div class="title_panel_input">
+                    <input type="text" #title="ngModel" [(ngModel)]="editPhotoModel.title" name="title"
+                        [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" style="width:100%" required>
+                    <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+                        <div *ngIf="title.errors.required">*Title is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 panel-fields">
+                <div class="title_panel_name">
+                    <label for="example-text-input" class="label_font">URL:</label>
+                </div>
+
+                <div class="title_panel_input">
+                    <input type="text" #url="ngModel" [(ngModel)]="editPhotoModel.url" name="url" style="width:100%"
+                        [ngClass]="{ 'is-invalid': f.submitted && url.invalid }" required>
+                    <div *ngIf="f.submitted && url.invalid" class="invalid-feedback">
+                        <div *ngIf="url.errors.required">*Url is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 panel-fields">
+                <div class="title_panel_name">
+                    <label for="example-text-input" class="label_font">Thumbnail URL:</label>
+                </div>
+
+                <div class="title_panel_input">
+                    <input type="text" #thumbnailUrl="ngModel" [(ngModel)]="editPhotoModel.thumbnailUrl"
+                        [ngClass]="{ 'is-invalid': f.submitted && thumbnailUrl.invalid }" name="thumbnailUrl" style="width:100%"
+                        required>
+                    <div *ngIf="f.submitted && thumbnailUrl.invalid" class="invalid-feedback">
+                        <div *ngIf="thumbnailUrl.errors.required">*Thumbnail Url is required</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" type="submit"><i class="fa fa-check-circle" style="margin-right: 5px;"
+                id="modal-delete"></i>Save</button>
+        <button type="button" class="btn btn-danger" (click)="close()"><i class="fa fa-times-circle"
+                style="margin-right: 5px;"></i>Close</button>
+    </div>
+</form>

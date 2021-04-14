@@ -1,0 +1,79 @@
+<form name="form" (ngSubmit)="f.form.valid && uploadPhoto()" #f="ngForm" id="forms">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-10 col-xs-10">
+                <h4 class="modal-heading" id="modal-basic-title">Upload Photo</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body text-center mb-20">
+
+        <div class="title_panel_input">
+            <input type="hidden" [(ngModel)]="uploadPhotoModel.albumId" name="AlbumId"
+                style="width:80%" disabled>
+        </div>
+
+        <div class="col-md-12 panel-fields">
+            <div class="title_panel_name">
+                <label for="example-text-input">Title:</label>
+            </div>
+
+            <div class="title_panel_input">
+                <input type="text" #Title="ngModel" [(ngModel)]="uploadPhotoModel.title"
+                    [ngClass]="{ 'is-invalid': f.submitted && Title.invalid }" name="Title" style="width:80%" required>
+                <div *ngIf="f.submitted && Title.invalid" class="invalid-feedback">
+                    <div *ngIf="Title.errors.required">*Title is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 panel-fields">
+            <div class="title_panel_name">
+                <label for="example-text-input">URL:</label>
+            </div>
+
+            <div class="title_panel_input">
+                <input type="text" #Url="ngModel" [(ngModel)]="uploadPhotoModel.url"
+                    [ngClass]="{ 'is-invalid': f.submitted && Url.invalid }" name="Url" style="width:80%" required>
+                <div *ngIf="f.submitted && Url.invalid" class="invalid-feedback">
+                    <div *ngIf="Url.errors.required">*Url is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 panel-fields">
+            <div class="title_panel_name">
+                <label for="example-text-input" class="label_font">Thumbnail URL:</label>
+            </div>
+
+            <div class="title_panel_input">
+                <input type="text" #ThumbnailUrl="ngModel"
+                    [(ngModel)]="uploadPhotoModel.thumbnailUrl"
+                    [ngClass]="{ 'is-invalid': f.submitted && ThumbnailUrl.invalid }" name="ThumbnailUrl"
+                    style="width:80%" required>
+                <div *ngIf="f.submitted && ThumbnailUrl.invalid" class="invalid-feedback">
+                    <div *ngIf="ThumbnailUrl.errors.required">*Thumbnail Url is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 panel-fields">
+             <div class="title_panel_input">
+                <input type="file" #file accept='image/*' (change)="preview(file.files)" name="file" required
+                    id="image-input" />
+                <div *ngIf="f.submitted && !imageValidator" class="invalid-feedback">
+                    <div *ngIf="!imageValidator">*File is required</div>
+                </div>
+                <img [src]="imgURL" height="200" *ngIf="imgURL">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-success" type="submit"><i class="fa fa-upload" style="margin-right: 5px;"
+                id="modal-delete"></i>Upload</button>
+        <button type="button" class="btn btn-danger" (click)="close()"><i class="fa fa-times-circle"
+                style="margin-right: 5px;"></i>Close</button>
+    </div>
+</form>

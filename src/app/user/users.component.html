@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12" style="text-align: center; margin-top:2rem">
+    <h5>Users</h5>
+  </div>
+</div>
+<div class="card-body">
+  <div class="row content-center">
+
+    <div *ngFor="let user of userViewModels" class="card col-md-2 col-sm-2 card-style"
+      [routerLink]="['/albums', user.id]">
+      <img src="../../assets/images/user-avatar.jpg" class="card-img-top" alt="user avatar">
+
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-md-12">
+            <span style="display: inline-block;">{{user.name}}</span>
+          </div>
+
+          <div class="col-md-12">
+            <span style="display: inline-block;">{{user.address.city}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

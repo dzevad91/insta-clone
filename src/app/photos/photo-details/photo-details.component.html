@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <div class="row">
+        <div class="col-md-12 col-sm-10 col-xs-10">
+            <h4 class="modal-heading" id="modal-basic-title">Photo Details</h4>
+        </div>
+    </div>
+</div>
+<div class="modal-body">
+
+    <div class="row">
+        <div class="col-md-12">
+            <label  class="col-form-label display-inline-block font-weight-500">Id:&nbsp;</label>
+            <div class="col-form-label display-inline-block">{{ photoViewModel.id}}</div>
+        </div>
+        <div class="col-md-12">
+            <label  class="col-form-label display-inline-block font-weight-500">Album Id:&nbsp; </label>
+            <div class="col-form-label display-inline-block">{{ photoViewModel.albumId}}</div>
+
+        </div>
+        <div class="col-md-12">
+            <label  class="col-form-label display-inline-block font-weight-500">Title:&nbsp;</label>
+            <div class="col-form-label display-inline-block">{{photoViewModel.title}}</div>
+
+        </div>
+        <div class="col-md-12">
+            <label  class="col-form-label display-inline-block font-weight-500">URL:&nbsp;</label>
+            <div class="col-form-label display-inline-block" style="word-break: break-word;"> {{photoViewModel.url}}</div>
+
+        </div>
+        <div class="col-md-12">
+            <label  class="col-form-label display-inline-block font-weight-500">Thumbnail URL:&nbsp; </label>
+            <div class="col-form-label display-inline-block" style="word-break: break-word;"> {{photoViewModel.thumbnailUrl}}</div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger"  (click)="close()"><i
+            class="fa fa-times" style="margin-right: 5px;"></i>Close</button>
+</div>

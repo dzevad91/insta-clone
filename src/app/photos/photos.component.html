@@ -1,0 +1,29 @@
+<ngx-spinner bdColor = "rgba(0,0,0,1)" size = "medium" color = "#ffffff" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-success" type="submit" (click)="uploadPhoto()" style="float:right;"><i
+        class="fa fa-upload" style="margin-right: 5px;"></i>Upload</button>
+    </div>
+    <div class="col-md-12" style="text-align: center; margin-top:1rem; margin-bottom:3%">
+      <h5>Photos ({{galleryImages?.length}})</h5>
+    </div>
+    <div class="row content-center">
+      <div *ngFor="let image of galleryImages let i = index;" class="card card-style">
+        <div class="col-xs-12 col-md-6 col-lg-12 no-pad"style="position: relative;">
+          <div class="card hover-card custom-card-width">
+            <i class="fa fa-eye view-photo" (click)="viewPhoto(image['photoId'], i)" ></i>
+            <i class="fa fa-edit edit-photo" (click)="editPhoto(image['photoId'], i)"></i>
+            <i class="fa fa-trash delete-photo"(click)="deletePhoto(image['photoId'], i)" ></i>
+            <img class="card-img-top img-responsive" (click)="openPreview(i)" [src]="image.small" alt="Card image cap" />
+            <h6 class="top cut-text" title="{{image.description}}" >{{image.description}}</h6>
+          </div>
+          </div>
+        </div>
+    </div>
+
+    <ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>
+
+
+  </div>
+</div>
